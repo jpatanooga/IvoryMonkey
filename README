@@ -1,0 +1,20 @@
+Some simple tools that work with the internals of Hadoop, HBase, File Formats, and Compression mechanics.
+
+Not all code is guaranteed to ... work.
+
+Checksum generator is a single threaded replica of Hadoop's internal Distributed hash-checksum mechanic.
+
+What its actually doing is saving the CRC32 of every 512 bytes (per block) and then doing a MD5 hash on that. Then when the
+"getFileChecksum()" method is called, each block for a file sends its md5 hash to a collector which are gathered together and a md5 hash is
+calc'd for all of the block hashes.
+
+My version includes code that can calculate the hash on the client side (but breaks things up in the same way that hdfs does and will
+calc it the same way).
+
+During development, we also discovered and filed:
+
+https://issues.apache.org/jira/browse/HDFS-772
+
+To invoke this method, use my shell wrapper:
+
+https://github.com/jpatanooga/IvoryMonkey/blob/master/src/tv/floe/IvoryMonkey/hadoop/fs/Shell.java
