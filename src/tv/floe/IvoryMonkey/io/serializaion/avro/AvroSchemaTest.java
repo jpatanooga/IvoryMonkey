@@ -22,7 +22,13 @@ import org.apache.avro.io.Encoder;
 import org.apache.avro.io.JsonDecoder;
 //import org.apache.avro
 
-
+/**
+ * 
+ * This Avro test is not meant to do much more than demonstrate the basics of avro serde.
+ * 
+ * Eventually I want to do some of my own comparisons of avro and other serde techniques to do my own perf tests.
+ * 
+ */
 public class AvroSchemaTest {
 
 		
